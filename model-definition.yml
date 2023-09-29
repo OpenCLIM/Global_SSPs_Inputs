@@ -8,7 +8,7 @@ metadata:
     The first model in the workflow designed to crop global ssp datasets to a specific country.
     This model takes all of the user parameter and dataset inputs and formats them ready to be used by the subsequent models.
     This data is then propogated through the model, reducing user input. 
-  source_code: https://github.com/OpenCLIM/impact-assessment
+  source_code: https://github.com/OpenCLIM/Global_SSPs_Inputs/ 
   description: >
     All data/ choices made by the user are inputted at this stage of the model to reduce user error. 
     This process simplifies the user input methods.
