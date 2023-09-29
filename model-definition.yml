@@ -1,0 +1,128 @@
+kind: M
+api_version: v1beta2
+metadata:
+  display_name: Global_SSPS:Inputs
+  name: data-ssp-inputs
+  publisher: Newcastle University
+  summary: >
+    The first model in the workflow designed to crop global ssp datasets to a specific country.
+    This model takes all of the user parameter and dataset inputs and formats them ready to be used by the subsequent models.
+    This data is then propogated through the model, reducing user input. 
+  source_code: https://github.com/OpenCLIM/impact-assessment
+  description: >
+    All data/ choices made by the user are inputted at this stage of the model to reduce user error. 
+    This process simplifies the user input methods.
+
+spec:
+  inputs:
+    parameters:
+      - name: COUNTRY
+        title: country
+        type: string
+        description: The country of interest.
+        default: 'Malaysia'
+        required: true
+
+      - name: SSP
+        title: ssp
+        type: string
+        description: The socio-economic pathway of interest.
+        default: 'ssp1'
+        required: true
+        options:
+          - name: 'ssp1'
+            title: 'ssp1'
+          - name: 'ssp2'
+            title: 'ssp2'
+          - name: 'ssp3'
+            title: 'ssp3'
+          - name: 'ssp4'
+            title: 'ssp4'
+          - name: 'ssp5'
+            title: 'ssp5'
+
+      - name: LEVEL
+        title: Local Authority Level
+        type: number
+        description: 
+          Countries are often divided into administration zones at regional, national and district levels. In most administration datasets, a numerical value is given to the level.
+          This parameter is recorded in the metadata file so that all people looking at the data know which administration region was used.
+        required: false
+        options:
+          - name: '1'
+            title: '1'
+          - name: '2'
+            title: '2'
+          - name: '3'
+            title: '3'
+
+      - name: LAD_NAME
+        title: Column Header for the LAD name
+        type: string
+        description:
+          Future models need to know the name of the column from the dataset of Local Authority polygons which contains the name of each LAD.
+        default: 'ADM2_EN'
+        required: true
+
+      - name: LAD_CODE
+        title: Column Header for the LAD code
+        description:
+          Future models need to know the name of the column from the dataset of Local Authority polygons which contains the code of each LAD.
+        type: string
+        default: 'ADM2_PCODE'
+        required: true
+
+    dataslots:
+      - name: Boundary File
+        description:
+          A .gpkg file containing the boundary of the country of interest.
+        default:
+          - 8e9c8d4f-b9d5-41b9-90ba-08cb6624668b
+        path: inputs/boundary/
+        required: true
+        
+      - name: SSP Data Sets
+        description:
+          Zip files of the global datasets for each SSP.
+        default:
+          - dddbfee9-8e6e-4fd4-90da-e6e162e40e78
+          - 9b9607be-0b8f-49d4-b9cc-6426f8647edb
+        path: inputs/ssps/
+        required: true
+
+      - name: Local Authority Districts
+        description:
+          A .gpkg file containing the boundarys for each Local Authority District.
+        default:
+          - 03c5c3b3-eaf9-44ba-97ec-20ae11793de5
+        path: inputs/lads/
+        required: true
+
+      
+  outputs:
+    datasets:
+      - name: outputs/boundary/*
+        type: folder
+        description:
+          The country boundary file is saved in gpkg form.
+
+      - name: outputs/lads/*
+        type: folder
+        description:
+          The local authority boundarys file is saved in gpkg form.
+
+      - name: outputs/ssp/*
+        type: folder
+        description:
+          Only the zip file for the selected ssp scneario is added to this folder.
+        
+      - name: outputs/parameters/*
+        type: folder
+        description:
+          All parameters and their values are stored in a csv file.
+          
+      - name: outputs/metadata/*
+        type: folder
+        description:
+          NID metadata for outputs.
+          These file can be used for creating datasets on DAFNI with the title defined by the parameters specified by the user.
