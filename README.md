@@ -5,15 +5,15 @@ The first model in the workflow designed to crop global ssp datasets to a specif
 All data/ choices made by the user are inputted at this stage of the model to reduce user error.  This process simplifies the user input methods.
 
 ## Input Parameters
-*Country
+* Country
   * Description: The country of interest.
-*SSP
+* SSP
   * Description: The socio-economic pathway of interest.
-*Administation Level
+* Administation Level
   * Description: Countries are often divided into administration zones at regional, national and district levels. In most administration datasets, a numerical value is given to the level. This parameter is recorded in the metadata file so that all people looking at the data know which administration region was used.
-*LAD_Name
+* LAD_Name
   * Description: Future models need to know the name of the column from the dataset of Local Authority polygons which contains the name of each LAD.
-*LAD_Code
+* LAD_Code
   * Description: Future models need to know the name of the column from the dataset of Local Authority polygons which contains the code of each LAD.
 
 
