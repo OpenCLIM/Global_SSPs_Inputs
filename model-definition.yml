@@ -85,8 +85,11 @@ spec:
         description:
           Zip files of the global datasets for each SSP.
         default:
-          - dddbfee9-8e6e-4fd4-90da-e6e162e40e78
-          - 9b9607be-0b8f-49d4-b9cc-6426f8647edb
+          - 7ad1c106-1cc9-464a-b16d-236235e8a818
+          - b706b797-8959-42d6-b9d5-b1c367f7c706
+          - 3e5f3de0-563c-47e0-9af6-98fb79f9b888
+          - d9a25784-ff46-4478-90d3-765ab708f1e0
+          - 580d83d7-7688-4113-8882-6f022cd08ba8
         path: inputs/ssps/
         required: true
 
